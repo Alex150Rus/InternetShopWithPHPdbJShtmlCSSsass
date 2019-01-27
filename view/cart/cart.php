@@ -105,7 +105,7 @@ $str.="
                       <span class=\"proceedToCheckOut__spanGrandTotal\">$ $totalPrice</span>
                   </p>
                   <hr>
-                  <a class=\"proceedToCheckOut__button\" href=\"/order\">proceed to&nbsp;checkout</a>
+                  <a class=\"proceedToCheckOut__button\" href=\"/checkout\">proceed to&nbsp;checkout</a>
               </div>
           </div>
       </div>

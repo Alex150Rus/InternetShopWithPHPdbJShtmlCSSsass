@@ -33,6 +33,11 @@ class SessionRepository
     return $_SESSION['cart'];
   }
 
+  public function getUser()
+  {
+    return $_SESSION['user'];
+  }
+
   public function decreaseItemQ_ty($id) {
     if ($counter = $_SESSION['goodsCounter'][$id] > 1) {
       $counter = $_SESSION['goodsCounter'][$id] -=1;

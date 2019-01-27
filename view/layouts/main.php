@@ -52,56 +52,48 @@
         </form>
         <div class="headerInsideRight">
           <ul class ="menucartaccount">
+            <li><div style="color: red; font-weight: 900"><? if($_SESSION['cart']){echo count($_SESSION['cart']);}?></div></li>
             <li class="menucartaccount__cart"><a href="/cart"><img src="img/Cart.png" alt="cart"></a>
               <section class="cartinfo">
-                <article class="productInCart">
-                  <a class="productInCart__imagelink" href="#" target="_blank">
-                    <img src="img/productincart1.jpg" alt="productincartimage">
+                <?php
+                $cart = $_SESSION['cart'];
+                $totalPrice = 0;
+                if ($cart != null) {
+                foreach ($cart as $key => $value) {
+                  $totalPrice += $cart[$key]->total_price;
+                $str.= "<article class=\"productInCart\">
+                  <a class=\"productInCart__imagelink\" href=\"#\" target=\"_blank\">
+                    <img src={$cart[$key]->img_src} alt=\"productincartimage\" width='72' height='85'>
                   </a>
-                  <div class="productInCart__description">
+                  <div class=\"productInCart__description\">
                     <div>
-                      <h2 class="productInCart__header">
-                        <a class="productInCart__link" href="#">Rebox Zane</a>
+                      <h2 class=\"productInCart__header\">
+                        <a class=\"productInCart__link\" href=\"#\">{$cart[$key]->name}</a>
                       </h2>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <p class="productInCart__priceincart">1&nbsp;x $250</p>
+                      <i class=\"fas fa-star\"></i>
+                      <i class=\"fas fa-star\"></i>
+                      <i class=\"fas fa-star\"></i>
+                      <i class=\"fas fa-star\"></i>
+                      <i class=\"fas fa-star-half-alt\"></i>
+                      <p class=\"productInCart__priceincart\">{$cart[$key]->q_ty}&nbsp;
+                      x $ {$cart[$key]->price}</p>
                     </div>
-                    <div class="productInCart__crossbutton">
-                      <i class="fas fa-times-circle"></i>
-                    </div>
+                    <a href=\"\product\del?id=$key\" class=\"productInCart__crossbutton\">
+                      <i class=\"fas fa-times-circle\"></i>
+                    </a>
                   </div>
-                </article>
-                <article class="productInCart">
-                  <a class="productInCart__imagelink" href="singlepage.html" target="_blank">
-                    <img src="img/productibcart2.jpg" alt="productincartimage">
-                  </a>
-                  <div class="productInCart__description">
-                    <div>
-                      <h2 class="productInCart__header">
-                        <a class="productInCart__link" href="#">Rebox Zane</a>
-                      </h2>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <p class="productInCart__priceincart">1&nbsp;x $250</p>
-                    </div>
-                    <div class="productInCart__crossbutton">
-                      <i class="fas fa-times-circle"></i>
-                    </div>
-                  </div>
-                </article>
-                <div class="productInCart__total">
+                </article>";
+                };
+                }
+                $str.="
+                <div class=\"productInCart__total\">
                   <p>TOTAL</p>
-                  <p>$500</p>
-                </div>
+                  <p>$ $totalPrice</p>
+                </div>";
+                echo $str;
+                ?>
                 <div>
-                  <a class="productInCart__cartbuttons" href="/order">CHECKOUT</a>
+                  <a class="productInCart__cartbuttons" href="/checkout">CHECKOUT</a>
                   <div class="productInCart__emptyelement"></div>
                   <a class="productInCart__cartbuttons" href="/cart">GO&nbsp;TO&nbsp;CART</a>
                 </div>

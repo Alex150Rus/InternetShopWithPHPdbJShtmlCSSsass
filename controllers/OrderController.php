@@ -8,20 +8,29 @@
 
 namespace app\controllers;
 
+
+
+use app\models\Order;
 use app\models\repositories\OrderRepository;
 
-
-class OrderController extends Controller
+class OrderController
 {
-  public function actionIndex() {
-    $productsInOrder = (new OrderRepository())->getOrder();
-    if (!$productsInOrder) {
-      $productsInOrder = [];
-    }
-    echo $this->render("order", ['products' => $productsInOrder, 'className'=>$this->getClassName()]);
+
+  public function sendOrder(){
+    $order = json_encode($this->getOrder());
+    $orderObj = new Order($id = null, $order, $this->getUser());
+    (new OrderRepository())->save($orderObj);
   }
 
   public function getClassName() {
     return 'order';
+  }
+
+  public function getOrder(){
+    return (new OrderRepository())-> getOrder();
+  }
+
+  public function getUser(){
+    return (new OrderRepository())-> getUser();
   }
 }

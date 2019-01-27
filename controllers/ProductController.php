@@ -9,16 +9,27 @@
 namespace app\controllers;
 
 use app\models\repositories\ProductRepository;
-use app\services\Request;
+use app\models\repositories\SessionRepository;
+use app\models\repositories\CartRepository;
+use app\base\App;
 
 class ProductController extends Controller
 {
   //дефолтный экшн - рисует каталог
   public function actionIndex() {
+
     //создаём необходимую сущность для отрисовки, вытаскивая нужную инфу из БД
+    new SessionRepository();
     $products = (new ProductRepository())->getAll();
     // отправляем на отрисовку
     echo $this->render("featureditems", ['product'=>$products, 'className'=>$this->getClassName()]);
+  }
+
+  public function actionDel()
+  {
+    App::call()->request->getHttpReferrer();
+    $id =  App::call()->request->getParams()['id'];
+    (new CartRepository())->deleteItem($id);
   }
 
   //public function actionCard() {

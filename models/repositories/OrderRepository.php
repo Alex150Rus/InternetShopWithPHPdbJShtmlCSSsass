@@ -24,6 +24,10 @@ class OrderRepository extends Repository
     return (new SessionRepository())->getCart();
   }
 
+  public function getUser(){
+    return (new SessionRepository())->getUser();
+  }
+
   public function decreaseItemQ_ty($id) {
     (new SessionRepository()) ->decreaseItemQ_ty($id);
   }

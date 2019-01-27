@@ -12,10 +12,9 @@ namespace app\controllers;
 use app\models\repositories\UserRepository;
 use app\base\App;
 
-class UserController extends Controller
+class UserController
 {
-
-  public function actionLogin()
+  public function login()
   {
     App::call()->request->getHttpReferrer();
     $userRepository = new UserRepository();
@@ -23,7 +22,7 @@ class UserController extends Controller
     $userRepository->ifUserExists($formInfo);
   }
 
-  public function actionRegister()
+  public function register()
   {
     App::call()->request->getHttpReferrer();
     $userRepository = new UserRepository();
@@ -32,9 +31,5 @@ class UserController extends Controller
       $userRepository->addUserToDb($formInfo);
     };
 
-  }
-
-  public function getClassName() {
-    return 'user';
   }
 }
