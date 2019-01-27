@@ -71,6 +71,11 @@ class SessionRepository
     unset($_SESSION['message']);
   }
 
+  public function unsetCart()
+  {
+    unset($_SESSION['cart']);
+  }
+
   public function sessionMessageRegistered($formInfo) {
     $_SESSION['user'] = $formInfo['login'];
     $_SESSION['message'] = "{$formInfo['login']}, cпасибо за регистрацию";
