@@ -8,10 +8,10 @@
 
 namespace app\models\repositories;
 
-use app\models\Cart;
+use app\models\Order;
 
 
-class CartRepository extends Repository
+class OrderRepository extends Repository
 {
 
   public function __construct($cart = null, $id=null)
@@ -20,7 +20,7 @@ class CartRepository extends Repository
     new SessionRepository ($cart, $id);
   }
 
-  public function getCart() {
+  public function getOrder() {
     return (new SessionRepository())->getCart();
   }
 
@@ -32,17 +32,17 @@ class CartRepository extends Repository
     (new SessionRepository()) -> deleteItem($id);
   }
 
-  public function clearCart() {
+  public function clearOrder() {
     (new SessionRepository()) -> clearCart();
   }
 
   public function getTableName() :string
   {
-    return 'cart';
+    return 'orders';
   }
 
   function getRecordClass()
   {
-    return Cart::class;
+    return Order::class;
   }
 }

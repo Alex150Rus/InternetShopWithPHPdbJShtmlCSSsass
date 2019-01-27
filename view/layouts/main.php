@@ -101,7 +101,7 @@
                   <p>$500</p>
                 </div>
                 <div>
-                  <a class="productInCart__cartbuttons" href="/user">CHECKOUT</a>
+                  <a class="productInCart__cartbuttons" href="/order">CHECKOUT</a>
                   <div class="productInCart__emptyelement"></div>
                   <a class="productInCart__cartbuttons" href="/cart">GO&nbsp;TO&nbsp;CART</a>
                 </div>
@@ -333,7 +333,7 @@
         <p>&copy;&nbsp;2017 Brand All Rights Reserved.</p>
       </div>
       <div class="rightfooter">
-        <a class="footericons" href="#">
+        <a class="footericons" href="https://www.facebook.com/profile.php?id=100030351242339">
           <i class="footericons__i fab fa-facebook-f"></i>
         </a>
         <a class="footericons twittericon" href="#">

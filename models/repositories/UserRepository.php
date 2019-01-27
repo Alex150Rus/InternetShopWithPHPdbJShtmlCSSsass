@@ -18,36 +18,28 @@ class UserRepository extends Repository
 
   public function __construct() {
     parent::__construct();
-    if (!$this->session) {
-      session_start();
-      $this->session = true;
-    }
+      new SessionRepository ();
   }
-
 
   public function ifUserExists($formInfo) {
     $user = (new UserRepository())->getAll();
     foreach($user as $key => $value) {
       if ($value->login == $formInfo['login'] && $value->password == $formInfo['password'] ) {
-        $_SESSION['message'] ='';
-        $_SESSION['message'] = "{$formInfo['login']}, рады видеть Вас снова";
-        $_SESSION['user'] = $formInfo['login'];
+        (new SessionRepository()) -> sessionMessageLogin($formInfo);
         return true;
       } elseif ($value->login == $formInfo['login']) {
-        $_SESSION['message'] ='';
-        $_SESSION['message'] = 'Пользователь существует, попробуйте другое имя/пароль';
+        (new SessionRepository()) -> sessionMessageLoginFailed();
         return true;
       }
     }
-    unset($_SESSION['message']);
+    (new SessionRepository()) -> unsetMessage();
     return false;
   }
 
   public function addUserToDb($formInfo){
     $newUser = new User($formInfo['login'], $formInfo['password']);
     (new UserRepository())->insert($newUser);
-    $_SESSION['user'] = $formInfo['login'];
-    $_SESSION['message'] = "{$formInfo['login']}, cпасибо за регистрацию";
+    (new SessionRepository()) ->sessionMessageRegistered($formInfo);
   }
 
   function getFormInfo(){

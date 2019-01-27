@@ -56,11 +56,6 @@ class Request
     return $_SERVER['REQUEST_METHOD'];
   }
 
-  public function getIsAjax()
-  {
-
-  }
-
   public function getHttpReferrer() {
     $this->httpreferrer = $_SERVER['HTTP_REFERER'];
     return header("Location: $this->httpreferrer");

@@ -1,5 +1,4 @@
-<?php
-$str = "<section class=\"newarrivalsmenWoman\">
+<section class=\"newarrivalsmenWoman\">
   <div class=\"newarrivals container\">
     <div class=\"leftpartnewarrivals\">
       <h2 class=\"leftpartnewarrivals__header text-pop-up-right\">NEW ARRIVALS</h2>
@@ -75,10 +74,10 @@ $str = "<section class=\"newarrivalsmenWoman\">
     <details>
       <summary class=\"checkout__list\"><h2 class=\"checkout__headers\">05.&nbsp;&nbsp;&nbsp;PAYMENT METHOD</h2></summary>
     </details>
-    <details>
+    <details open>
       <summary class=\"checkout__list\"><h2 class=\"checkout__headers\">06.&nbsp;&nbsp;&nbsp;ORDER REVIEW</h2></summary>
+      <?=$content?>
     </details>
   </div>
-</section>";
-echo $str;
+</section>
 
