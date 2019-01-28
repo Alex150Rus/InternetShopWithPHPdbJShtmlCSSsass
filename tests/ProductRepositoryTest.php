@@ -10,10 +10,11 @@ use app\models\repositories\ProductRepository;
 
 class ProductRepositoryTest extends \PHPUnit\Framework\TestCase
 {
+  // работает, когда из конструктора рерозитория убираю обращение к собственномук методу получения БД
  public function testGetTableName(){
+
    $userRepository = new ProductRepository();
    $str = $userRepository->getTableName();
-   $this->assertEquals('users', $str);
-   $this->assertNan($str);
+   $this->assertEquals('featureditems', $str);
  }
 }

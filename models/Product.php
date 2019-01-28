@@ -28,4 +28,9 @@ public function __construct(
   $this->vendor_id=$vendor_id;
   $this->img_src=$img_src;
 }
+
+public function getClassName() {
+  return Product::class;
+}
+
 }

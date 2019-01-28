@@ -19,9 +19,6 @@ return [
     ],
     'renderer' => [
       'class' => \app\services\renderers\TemplateRenderer::class
-    ],
-    'session' => [
-      'class' => \app\services\Session::class
     ]
   ]
 ];
